@@ -10,3 +10,7 @@ compatibility_date = "2023-04-20"
 
 [build]
   command = "npm run build"
+
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "remix-hono-cloudflare"

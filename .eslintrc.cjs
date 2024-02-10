@@ -21,7 +21,13 @@ module.exports = {
   },
 
   // Base config
-  extends: ["eslint:recommended"],
+  extends: ["eslint:recommended", "prettier"],
+  plugins: ["simple-import-sort", "unused-imports"],
+
+  rules: {
+    "simple-import-sort/imports": "warn",
+    "unused-imports/no-unused-imports": "warn",
+  },
 
   overrides: [
     // React
@@ -33,6 +39,7 @@ module.exports = {
         "plugin:react/jsx-runtime",
         "plugin:react-hooks/recommended",
         "plugin:jsx-a11y/recommended",
+        "prettier",
       ],
       settings: {
         react: {
@@ -69,6 +76,7 @@ module.exports = {
         "plugin:@typescript-eslint/recommended",
         "plugin:import/recommended",
         "plugin:import/typescript",
+        "prettier",
       ],
     },
 

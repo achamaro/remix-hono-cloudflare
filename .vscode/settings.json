@@ -1,0 +1,19 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always",
+    "source.fixAll.stylelint": "always"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "css.validate": false,
+  "postcss.validate": false,
+  "stylelint.validate": ["css", "postcss"],
+  "files.associations": {
+    ".dev.vars": "dotenv",
+    ".env.ts": "typescript"
+  },
+  "cSpell.words": ["papaparse"]
+}
