@@ -37,7 +37,7 @@ jobs:
             ADMIN_JWT_SECRET
             ADMIN_CREDENTIALS
             DKIM_KEY
-          command: deploy ${{ env.BRANCH_NAME != 'main' && ' --env staging' || '' }}
+          environment: ${{ env.ENVIRONMENT }}
         env:
           MAIL_FROM: ${{ secrets.MAIL_FROM }}
           MAIL_TO: ${{ secrets.MAIL_TO }}
@@ -46,4 +46,4 @@ jobs:
           ADMIN_JWT_SECRET: ${{ secrets.ADMIN_JWT_SECRET }}
           ADMIN_CREDENTIALS: ${{ secrets.ADMIN_CREDENTIALS }}
           DKIM_KEY: ${{ secrets.DKIM_KEY }}
-          BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+          ENVIRONMENT: ${{ (github.head_ref || github.ref_name) != 'main' && 'staging' || '' }}
