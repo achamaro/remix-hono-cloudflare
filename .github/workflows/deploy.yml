@@ -4,6 +4,17 @@ on:
   push:
     branches:
       - main
+      - develop
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Choose an environment to deploy to: <staging|production>"
+        required: true
+        default: "staging"
+        type: choice
+        options:
+          - staging
+          - production
 
 jobs:
   deploy:
@@ -26,6 +37,7 @@ jobs:
             ADMIN_JWT_SECRET
             ADMIN_CREDENTIALS
             DKIM_KEY
+          command: deploy ${{ env.BRANCH_NAME != 'main' && ' --env staging' || '' }}
         env:
           MAIL_FROM: ${{ secrets.MAIL_FROM }}
           MAIL_TO: ${{ secrets.MAIL_TO }}
@@ -34,3 +46,4 @@ jobs:
           ADMIN_JWT_SECRET: ${{ secrets.ADMIN_JWT_SECRET }}
           ADMIN_CREDENTIALS: ${{ secrets.ADMIN_CREDENTIALS }}
           DKIM_KEY: ${{ secrets.DKIM_KEY }}
+          BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
