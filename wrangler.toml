@@ -5,9 +5,9 @@ main = "./build/index.js"
 # https://developers.cloudflare.com/workers/platform/compatibility-dates
 compatibility_date = "2023-04-20"
 
-r2_buckets  = [
-  { binding = "BUCKET", bucket_name = "remix-hono-cloudflare"},
-]
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "remix-hono-cloudflare"
 
 [site]
   bucket = "./public"
@@ -15,7 +15,7 @@ r2_buckets  = [
 [build]
   command = "npm run build"
 
-[env.staging]
-r2_buckets  = [
-  { binding = "BUCKET", bucket_name = "remix-hono-cloudflare-test"},
-]
+# staging
+[[env.staging.r2_buckets]]
+binding = "BUCKET"
+bucket_name = "remix-hono-cloudflare-test"

@@ -11,9 +11,13 @@ export async function action({ context }: ActionFunctionArgs) {
   const personalization = {
     to: [to],
     from,
-    dkim_domain: context.env.MAIL_FROM.split("@")[1],
-    dkim_selector: "mailchannels",
-    dkim_private_key: context.env.DKIM_KEY,
+    ...(context.env.DKIM_KEY
+      ? {
+          dkim_domain: context.env.MAIL_FROM.split("@")[1],
+          dkim_selector: "mailchannels",
+          dkim_private_key: context.env.DKIM_KEY,
+        }
+      : {}),
   };
   const payload = {
     personalizations: [personalization],
