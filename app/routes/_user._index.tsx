@@ -1,5 +1,5 @@
 import { ActionFunctionArgs } from "@remix-run/cloudflare";
-import { Form, Link, useLoaderData } from "@remix-run/react";
+import { useFetcher, useLoaderData } from "@remix-run/react";
 
 export async function action({ context }: ActionFunctionArgs) {
   const to = {
@@ -26,6 +26,7 @@ export async function action({ context }: ActionFunctionArgs) {
       },
     ],
   };
+  console.log(payload);
   const response = await fetch("https://api.mailchannels.net/tx/v1/send", {
     method: "POST",
     headers: {
@@ -33,9 +34,15 @@ export async function action({ context }: ActionFunctionArgs) {
     },
     body: JSON.stringify(payload),
   });
-  console.log("Done", response.status);
+  const result = await response.text();
+  console.log("Done", response.status, result);
 
-  return null;
+  return new Response(result, {
+    status: 200,
+    headers: {
+      "content-type": "text/html",
+    },
+  });
 }
 
 export async function loader({ context }: ActionFunctionArgs) {
@@ -49,14 +56,17 @@ export async function loader({ context }: ActionFunctionArgs) {
 
 export default function Index() {
   const { data } = useLoaderData<typeof loader>();
-  console.log(data);
+
+  const fetcher = useFetcher<typeof action>();
+  function handleSend() {
+    fetcher.submit(null, { method: "post" });
+  }
+
   return (
     <div>
-      <Link to="/admin">管理者ページ</Link>
-
-      <Form method="post">
-        <button>Send</button>
-      </Form>
+      <button className="border rounded px-2 py-1" onClick={handleSend}>
+        Send
+      </button>
 
       {data && (
         <table>

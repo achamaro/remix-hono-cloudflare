@@ -13,9 +13,11 @@ export const meta: MetaFunction = () => {
 
 export default function UserRoot() {
   return (
-    <div>
-      <h1>User Root</h1>
-      <Outlet />
+    <div className="p-5">
+      <h1>ユーザーページ</h1>
+      <main className="mt-5">
+        <Outlet />
+      </main>
     </div>
   );
 }
