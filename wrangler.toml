@@ -16,3 +16,6 @@ binding = "BUCKET"
 bucket_name = "remix-hono-cloudflare"
 
 [env.staging]
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "remix-hono-cloudflare-test"
