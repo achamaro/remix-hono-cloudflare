@@ -26,11 +26,11 @@ jobs:
             ADMIN_JWT_SECRET
             ADMIN_CREDENTIALS
             DKIM_KEY
-    env:
-      MAIL_FROM: ${{ secrets.MAIL_FROM }}
-      MAIL_TO: ${{ secrets.MAIL_TO }}
-      BASIC_AUTH_USERNAME: ${{ secrets.BASIC_AUTH_USERNAME }}
-      BASIC_AUTH_PASSWORD: ${{ secrets.BASIC_AUTH_PASSWORD }}
-      ADMIN_JWT_SECRET: ${{ secrets.ADMIN_JWT_SECRET }}
-      ADMIN_CREDENTIALS: ${{ secrets.ADMIN_CREDENTIALS }}
-      DKIM_KEY: ${{ secrets.DKIM_KEY }}
+        env:
+          MAIL_FROM: ${{ secrets.MAIL_FROM }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
+          BASIC_AUTH_USERNAME: ${{ secrets.BASIC_AUTH_USERNAME }}
+          BASIC_AUTH_PASSWORD: ${{ secrets.BASIC_AUTH_PASSWORD }}
+          ADMIN_JWT_SECRET: ${{ secrets.ADMIN_JWT_SECRET }}
+          ADMIN_CREDENTIALS: ${{ secrets.ADMIN_CREDENTIALS }}
+          DKIM_KEY: ${{ secrets.DKIM_KEY }}
