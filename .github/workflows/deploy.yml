@@ -7,12 +7,16 @@ on:
       - develop
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref_name }}
+  cancel-in-progress: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     name: Deploy
     environment:
-      name: ${{ (github.head_ref || github.ref_name) == 'main' && 'production' || 'staging' }}
+      name: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js
@@ -43,4 +47,4 @@ jobs:
           ADMIN_JWT_SECRET: ${{ secrets.ADMIN_JWT_SECRET }}
           ADMIN_CREDENTIALS: ${{ secrets.ADMIN_CREDENTIALS }}
           DKIM_KEY: ${{ secrets.DKIM_KEY }}
-          ENVIRONMENT: ${{ (github.head_ref || github.ref_name) != 'main' && 'staging' || '' }}
+          ENVIRONMENT: ${{ github.ref_name != 'main' && 'staging' || '' }}
