@@ -1,37 +1,34 @@
-# Welcome to Remix!
+# Remix + Hono + Cloudflare Workers
 
-- [Remix Docs](https://remix.run/docs)
+## Environment Variables
+
+| 環境変数            | 説明                          | 備考                            |
+| ------------------- | ----------------------------- | ------------------------------- |
+| MAIL_FROM           | 送信元メールアドレス          |                                 |
+| MAIL_TO             | 送信先メールアドレス          |                                 |
+| BASIC_AUTH_USERNAME | Basic認証のユーザー名         | Basic認証が有効にする場合に設定 |
+| BASIC_AUTH_PASSWORD | Basic認証のパスワード         | Basic認証が有効にする場合に設定 |
+| ADMIN_JWT_SECRET    | 管理画面認証用JWTシークレット | 例: `openssl rand -hex 32`      |
+| ADMIN_CREDENTIALS   | 管理者の認証情報              | `{login_id}={password}`         |
+| MAILTRAP_API_TOKEN  | Mailtrap APIトークン          | ローカル環境でのメール送信用    |
+| MAILTRAP_INBOX_ID   | Mailtrap inbox ID             | ローカル環境でのメール送信用    |
+| DKIM_KEY            | DKIM秘密鍵                    | Workers環境のMailChannels用     |
 
 ## Development
 
-You will be running two processes during development:
-
-- The Miniflare server (miniflare is a local environment for Cloudflare Workers)
-- The Remix development server
-
-Both are started with one command:
-
-```sh
-npm run dev
-```
-
-Open up [http://127.0.0.1:8787](http://127.0.0.1:8787) and you should be ready to go!
-
-If you want to check the production build, you can stop the dev server and run following commands:
-
-```sh
-npm run build
-npm start
-```
-
-Then refresh the same URL in your browser (no live reload for production builds).
+1. `.env.sample` を元に `.dev.vars` を作成する
+2. 開発環境起動
+   ```sh
+   npm run dev
+   ```
 
 ## Deployment
 
-If you don't already have an account, then [create a cloudflare account here](https://dash.cloudflare.com/sign-up) and after verifying your email address with Cloudflare, go to your dashboard and set up your free custom Cloudflare Workers subdomain.
+Github Actions でブランチごとに対応する環境にデプロイされる。
 
-Once that's done, you should be able to deploy your app:
+事前に対応するR2バケットを作成しておく。
 
-```sh
-npm run deploy
-```
+| ブランチ名 | デプロイ先                       | R2                            |
+| ---------- | -------------------------------- | ----------------------------- |
+| main       | remix-cloudflare-workers         | remix-cloudflare-workers      |
+| develop    | remix-cloudflare-workers-staging | remix-cloudflare-workers-test |

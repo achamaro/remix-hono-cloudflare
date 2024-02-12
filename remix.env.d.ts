@@ -29,10 +29,6 @@ declare global {
   declare type AppEnv = {
     BUCKET: R2Bucket;
 
-    MAIL_HOST: string;
-    MAIL_PORT: string;
-    MAIL_USERNAME: string;
-    MAIL_PASSWORD: string;
     MAIL_FROM: string;
     MAIL_TO: string;
 
@@ -41,6 +37,9 @@ declare global {
 
     ADMIN_JWT_SECRET: string;
     ADMIN_CREDENTIALS: string;
+
+    MAILTRAP_API_TOKEN: string;
+    MAILTRAP_INBOX_ID: string;
 
     DKIM_KEY: string;
   };

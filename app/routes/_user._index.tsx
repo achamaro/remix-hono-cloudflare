@@ -1,50 +1,18 @@
 import { ActionFunctionArgs } from "@remix-run/cloudflare";
 import { useFetcher, useLoaderData } from "@remix-run/react";
 
-export async function action({ context }: ActionFunctionArgs) {
-  const to = {
-    email: context.env.MAIL_TO,
-  };
-  const from = {
-    email: context.env.MAIL_FROM,
-  };
-  const personalization = {
-    to: [to],
-    from,
-    ...(context.env.DKIM_KEY
-      ? {
-          dkim_domain: context.env.MAIL_FROM.split("@")[1],
-          dkim_selector: "mailchannels",
-          dkim_private_key: context.env.DKIM_KEY,
-        }
-      : {}),
-  };
-  const payload = {
-    personalizations: [personalization],
-    from,
-    subject: "テストメール",
-    content: [
-      {
-        type: "text/plain",
-        value: "テストメールです",
-      },
-    ],
-  };
-  console.log(payload);
-  const response = await fetch("https://api.mailchannels.net/tx/v1/send", {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-    },
-    body: JSON.stringify(payload),
-  });
-  const result = await response.text();
-  console.log("Done", response.status, result);
+import { send } from "~/lib/mail";
 
-  return new Response(result, {
+export async function action({ context }: ActionFunctionArgs) {
+  const subject = "テストメール";
+  const body = "テストメールです";
+
+  const response = await send(subject, body, context.env);
+
+  return new Response(await response.text(), {
     status: 200,
     headers: {
-      "content-type": "text/html",
+      "Content-Type": response.headers.get("Content-Type") || "text/html",
     },
   });
 }

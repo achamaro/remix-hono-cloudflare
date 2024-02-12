@@ -15,5 +15,5 @@
     ".dev.vars": "dotenv",
     ".env.ts": "typescript"
   },
-  "cSpell.words": ["papaparse"]
+  "cSpell.words": ["mailchannels", "papaparse"]
 }
