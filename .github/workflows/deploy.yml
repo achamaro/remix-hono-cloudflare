@@ -14,7 +14,13 @@ jobs:
     environment:
       name: ${{ (github.head_ref || github.ref_name) == 'main' && 'production' || 'staging' }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20.11.0"
+          cache: "npm"
+      - run: npm install
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
         with:
