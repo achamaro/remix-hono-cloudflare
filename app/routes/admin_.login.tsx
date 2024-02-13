@@ -7,7 +7,7 @@ import { adminToken } from "~/cookie.server";
 export async function action({ request, context }: ActionFunctionArgs) {
   const [id, password] = context.env.ADMIN_CREDENTIALS.split("=");
   const body = await request.formData();
-  if (body.get("id") === id || body.get("password") === password) {
+  if (body.get("id") === id && body.get("password") === password) {
     const token = await sign(
       { exp: Math.round(Date.now() / 1000 + 60 * 60), data: { id } },
       context.env.ADMIN_JWT_SECRET,
