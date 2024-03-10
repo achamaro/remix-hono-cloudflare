@@ -3,11 +3,6 @@ import { RemixServer } from "@remix-run/react";
 import { isbot } from "isbot";
 import { renderToReadableStream } from "react-dom/server";
 
-export function handleError(err: unknown) {
-  console.trace();
-  console.error(err);
-}
-
 export default async function handleRequest(
   request: Request,
   responseStatusCode: number,

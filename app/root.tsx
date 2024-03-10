@@ -9,7 +9,6 @@ import {
   ScrollRestoration,
   useRouteError,
 } from "@remix-run/react";
-import { captureRemixErrorBoundaryError, withSentry } from "@sentry/remix";
 
 import tailwindStyles from "./tailwind.css";
 
@@ -17,7 +16,7 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: tailwindStyles },
 ];
 
-function App() {
+export function App() {
   return (
     <html lang="ja">
       <head>
@@ -36,11 +35,8 @@ function App() {
   );
 }
 
-export default withSentry(App);
-
 export function ErrorBoundary() {
   const error = useRouteError();
-  captureRemixErrorBoundaryError(error);
   return (
     <html lang="ja">
       <head>
