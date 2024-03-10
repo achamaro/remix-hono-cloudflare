@@ -19,6 +19,8 @@ Sentry.init({
   tracesSampleRate: 1.0,
 });
 
+export const handleError = Sentry.wrapRemixHandleError;
+
 export default async function handleRequest(
   request: Request,
   responseStatusCode: number,
