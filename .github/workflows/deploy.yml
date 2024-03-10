@@ -22,10 +22,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Replace Sentry release
-        run: |
-          sed -i 's/SENTRY_RELEASE/${{ github.sha }}/' ./app/entry.client.tsx
-
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
