@@ -45,7 +45,7 @@ export function ErrorBoundary() {
         <Links />
       </head>
       <body>
-        <h1>
+        <h1 className="text-xl font-bold">
           {isRouteErrorResponse(error)
             ? `${error.status} ${error.statusText}`
             : error instanceof Error

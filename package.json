@@ -14,6 +14,7 @@
   "dependencies": {
     "@remix-run/cloudflare": "^2.6.0",
     "@remix-run/react": "^2.6.0",
+    "@sentry/remix": "^7.106.0",
     "encoding-japanese": "^2.0.0",
     "hono": "^3.12.10",
     "isbot": "^4.1.0",

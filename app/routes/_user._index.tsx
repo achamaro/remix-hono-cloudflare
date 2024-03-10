@@ -3,6 +3,8 @@ import { useFetcher, useLoaderData } from "@remix-run/react";
 
 import { send } from "~/lib/mail";
 
+import { ErrorAction, ErrorLocal } from "./_user.error-action";
+
 export async function action({ context }: ActionFunctionArgs) {
   const subject = "テストメール";
   const body = "テストメールです";
@@ -39,6 +41,9 @@ export default function Index() {
       <button className="border rounded px-2 py-1" onClick={handleSend}>
         Send
       </button>
+
+      <ErrorAction />
+      <ErrorLocal />
 
       {data && (
         <table>
