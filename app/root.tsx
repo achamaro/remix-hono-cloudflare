@@ -16,7 +16,7 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: tailwindStyles },
 ];
 
-export function App() {
+export default function App() {
   return (
     <html lang="ja">
       <head>
