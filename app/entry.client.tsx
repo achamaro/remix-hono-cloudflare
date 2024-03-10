@@ -10,7 +10,7 @@ import { startTransition, StrictMode, useEffect } from "react";
 import { hydrateRoot } from "react-dom/client";
 
 Sentry.init({
-  dsn: "https://a5a1a437737a6a2bdfdd75fef2804d99@o4506883972071424.ingest.us.sentry.io/4506884094885888",
+  dsn: "https://b4b4b8f0f77c116542c5a39e90345924@o4506883972071424.ingest.us.sentry.io/4506884094885888",
   integrations: [
     Sentry.browserTracingIntegration({
       useEffect,
