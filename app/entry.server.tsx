@@ -19,7 +19,9 @@ Sentry.init({
   tracesSampleRate: 1.0,
 });
 
-export const handleError = Sentry.wrapRemixHandleError;
+export const handleError = (err) => {
+  console.error(err);
+};
 
 export default async function handleRequest(
   request: Request,
