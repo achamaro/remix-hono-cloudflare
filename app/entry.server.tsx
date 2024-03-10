@@ -6,8 +6,18 @@
 
 import type { AppLoadContext, EntryContext } from "@remix-run/cloudflare";
 import { RemixServer } from "@remix-run/react";
+import * as Sentry from "@sentry/remix";
 import { isbot } from "isbot";
 import { renderToReadableStream } from "react-dom/server";
+
+Sentry.init({
+  dsn: "https://a5a1a437737a6a2bdfdd75fef2804d99@o4506883972071424.ingest.us.sentry.io/4506884094885888",
+
+  // Set tracesSampleRate to 1.0 to capture 100%
+  // of transactions for performance monitoring.
+  // We recommend adjusting this value in production
+  tracesSampleRate: 1.0,
+});
 
 export default async function handleRequest(
   request: Request,
