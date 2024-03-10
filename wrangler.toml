@@ -16,6 +16,11 @@ bucket_name = "remix-hono-cloudflare"
   command = "npm run build"
 
 # staging
+[env.staging]
+routes = [
+	{ pattern = "remix-hono-cloudflare-staging.achamaro.work", custom_domain = true }
+]
+
 [[env.staging.r2_buckets]]
 binding = "BUCKET"
 bucket_name = "remix-hono-cloudflare-test"
