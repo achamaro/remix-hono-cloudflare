@@ -54,3 +54,4 @@ jobs:
           ADMIN_JWT_SECRET: ${{ secrets.ADMIN_JWT_SECRET }}
           ADMIN_CREDENTIALS: ${{ secrets.ADMIN_CREDENTIALS }}
           DKIM_KEY: ${{ secrets.DKIM_KEY }}
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
