@@ -21,7 +21,7 @@ bucket_name = "remix-hono-cloudflare"
 routes = [
 	{ pattern = "remix-hono-cloudflare-staging.achamaro.work", custom_domain = true }
 ]
-tail_consumers = [{service = "remix-hono-cloudflare-staging-tail"}]
+tail_consumers = [{service = "remix-cloudflare-workers-staging-tail"}]
 
 [[env.staging.r2_buckets]]
 binding = "BUCKET"
