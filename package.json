@@ -4,7 +4,7 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "build": "remix build --sourcemap",
+    "build": "remix build --sourcemap && sentry-upload-sourcemaps --org achamaro --project remix-cloudflare-workers-staging",
     "deploy": "wrangler deploy",
     "dev": "remix dev --manual -c \"npm start\"",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
