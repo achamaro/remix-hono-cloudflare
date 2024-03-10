@@ -1,6 +1,7 @@
 import { useFetcher } from "@remix-run/react";
 
-export function action() {
+export async function action() {
+  console.log("before error");
   const a = undef.prop;
 }
 
