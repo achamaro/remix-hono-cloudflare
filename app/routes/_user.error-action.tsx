@@ -1,7 +1,7 @@
 import { useFetcher } from "@remix-run/react";
 
 export function action() {
-  error();
+  const a = undef.prop;
 }
 
 function error() {

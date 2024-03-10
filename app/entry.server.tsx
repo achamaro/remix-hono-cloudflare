@@ -39,6 +39,13 @@ export default async function handleRequest(
         // Log streaming rendering errors from inside the shell
         console.error(error);
         responseStatusCode = 500;
+
+        if (error instanceof Error) {
+          Sentry.captureRemixServerException(error, "remix.server", request);
+        } else {
+          // Optionally capture non-Error objects
+          Sentry.captureException(error);
+        }
       },
     }
   );
