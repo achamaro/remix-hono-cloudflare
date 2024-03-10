@@ -11,7 +11,7 @@ import { hydrateRoot } from "react-dom/client";
 
 Sentry.init({
   dsn: "https://b4b4b8f0f77c116542c5a39e90345924@o4506883972071424.ingest.us.sentry.io/4506884094885888",
-  // release: "SENTRY_RELEASE",
+  release: "SENTRY_RELEASE",
   integrations: [
     Sentry.browserTracingIntegration({
       useEffect,
