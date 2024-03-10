@@ -28,7 +28,7 @@ Github Actions でブランチごとに対応する環境にデプロイされ�
 
 事前に対応するR2バケットを作成しておく。
 
-| ブランチ名 | デプロイ先                       | R2                            |
-| ---------- | -------------------------------- | ----------------------------- |
-| main       | remix-cloudflare-workers         | remix-cloudflare-workers      |
-| develop    | remix-cloudflare-workers-staging | remix-cloudflare-workers-test |
+| ブランチ名 | デプロイ先                       | R2                               |
+| ---------- | -------------------------------- | -------------------------------- |
+| main       | remix-cloudflare-workers         | remix-cloudflare-workers         |
+| develop    | remix-cloudflare-workers-staging | remix-cloudflare-workers-staging |

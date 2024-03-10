@@ -11,6 +11,7 @@ bucket_name = "remix-hono-cloudflare"
 
 [site]
   bucket = "./public"
+  exclude = ["*.map"]
 
 [build]
   command = "npm run build"
@@ -20,7 +21,6 @@ bucket_name = "remix-hono-cloudflare"
 routes = [
 	{ pattern = "remix-hono-cloudflare-staging.achamaro.work", custom_domain = true }
 ]
-logpush = true
 
 [[env.staging.r2_buckets]]
 binding = "BUCKET"
