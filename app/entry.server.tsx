@@ -4,7 +4,7 @@ import { isbot } from "isbot";
 import { renderToReadableStream } from "react-dom/server";
 
 export function handleError(err: unknown) {
-  console.trace(err);
+  console.trace();
   console.error(err);
 }
 
